@@ -1,0 +1,114 @@
+<head>
+<style>
+	.section{
+		display:flex;
+		align-items: center;
+		justify-content: space-evenly;
+		flex-wrap:wrap;
+		
+	}
+	
+	p{
+		color:red;
+		text-align:center;
+	}
+	
+	.mali{	
+		border-radius:1rem;
+		width: calc(100% / 4);
+		margin:1.5rem;
+		border: 1px solid yellow;
+	}
+	
+	#stop{
+		margin: 0px auto;
+	}
+	
+	#stop_div{
+		text-align:center;
+	}
+	
+	
+	
+	
+	.slider-container {
+        width: 19rem;
+		margin: 0 auto;
+		text-align:center;
+	}
+    .slider {
+        width: 100%;
+		
+    }
+    .value-display {
+        font-size: 1.5em
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center;">Currently Playing #{title}(none)</h1>
+<div class="section">
+	<div class="mali">
+		<p id = "2">#{name_of_folder}</p>
+		<div id="3" hidden style="text-align:center;">
+				<strong>#{name_of_audio_file}</strong>
+				<time>#{duration_of_audio_file}</time>
+		</div>
+	</div>
+</div>
+<div id="stop_div">
+<button id="stop">STOP</button></div>
+<br>
+<br>
+<div class="slider-container">
+    <input type="range" min="1" max="100" value="0" class="slider" id="6">
+    <div class="value-display" id="7">0</div>
+</div>
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+	    $(document).ready(function () {
+			$("#2").click(function () {
+				//aicia trebe ca if id2 are hidden sa il scoata si daca nu il are sa il bage
+				if($("#3").is("[hidden]")){
+					$("#3").removeAttr("hidden");
+				}else{
+					$("#3").attr("hidden", "true");
+				}
+			});
+			$("#3").click(function() {
+				$("h1").html("Currently Playing #{name_of_audio_file}")
+			});
+			$("#stop").click(function(){
+				$("h1").html("Currently Playing #{title}(none)");
+				$("#6").val(0);
+				$("#7").text(0);
+			});	
+			$('#6').on('input', function() {
+				$('#7').text($("#6").val());
+			});
+					
+				
+        });
+
+</script>
+</body>
